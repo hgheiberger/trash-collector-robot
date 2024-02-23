@@ -16,8 +16,8 @@ class DrivePublisher(Node):
 
     def timer_callback(self):
         drive_msg = Twist()
-	drive_msg.linear.x = 0.5
-	drive_msg.angular.z = 0.0
+        drive_msg.linear.x = 0.5
+        drive_msg.angular.z = 0.0
         self.publisher_.publish(drive_msg)
         self.get_logger().info('Publishing drive command')
 
