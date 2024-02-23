@@ -27,7 +27,7 @@ def main(args=None):
 
     drive_publisher = DrivePublisher()
 
-    rclpy.spin('drive_publisher')
+    rclpy.spin(drive_publisher)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
