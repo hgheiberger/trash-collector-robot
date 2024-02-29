@@ -15,8 +15,8 @@ class PointPublisher(Node):
 
     def timer_callback(self):
         point_msg = Point()
-        point_msg.x = 3
-        point_msg.y = 2
+        point_msg.x = 3.0
+        point_msg.y = 2.0
         point_msg.z = 0.0
         self.publisher_.publish(point_msg)
         self.get_logger().info('Publishing point command')
