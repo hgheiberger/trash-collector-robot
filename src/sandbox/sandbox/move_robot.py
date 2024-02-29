@@ -19,7 +19,7 @@ class DrivePublisher(Node):
         drive_msg.linear.x = 0.5
         drive_msg.angular.z = 0.0
         self.publisher_.publish(drive_msg)
-        self.get_logger().info('Publishing drive command')
+        #self.get_logger().info('Publishing drive command')
 
 
 def main(args=None):
