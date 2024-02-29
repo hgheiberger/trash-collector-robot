@@ -21,6 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
 		'drive = sandbox.move_robot:main',
+        'pixel = sandbox.publish_point:main',
+        'homography = sandbox.homography_transformer:main',
         ],
     },
 )
