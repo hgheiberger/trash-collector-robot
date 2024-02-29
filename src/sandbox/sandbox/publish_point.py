@@ -11,7 +11,7 @@ class PointPublisher(Node):
     def __init__(self):
         super().__init__('drive_publisher')
         self.publisher_ = self.create_publisher(Point, '/trash_pixel_loc', 10)
-        self.marker_pub = rclpy.create_publisher(Marker, "/trash_pixel_marker", 1)
+        self.marker_pub = self.create_publisher(Marker, "/trash_pixel_marker", 1)
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
