@@ -39,10 +39,10 @@ METERS_PER_INCH = 0.0254
 class HomographyTransformer(Node):
     def __init__(self):
         super().__init__("homography_transformer")
-        self.cone_px_sub = rclpy.create_subscription(Point, "/trash_pixel_loc", self.cone_detection_callback, 10)
-        self.cone_pub = rclpy.create_publisher(Point, "/trash_world_loc", 10)
+        self.cone_px_sub = self.create_subscription(Point, "/trash_pixel_loc", self.cone_detection_callback, 10)
+        self.cone_pub = self.create_publisher(Point, "/trash_world_loc", 10)
 
-        self.marker_pub = rclpy.create_publisher(Marker, "/trash_marker", 1)
+        self.marker_pub = self.create_publisher(Marker, "/trash_marker", 1)
 
         if not len(PTS_GROUND_PLANE) == len(PTS_IMAGE_PLANE):
             self.get_logger().info("ERROR: PTS_GROUND_PLANE and PTS_IMAGE_PLANE should be of same length")
