@@ -13,17 +13,16 @@ class ParkingController(Node):
     """
     def __init__(self):
         ## will receive an x,y coord
-        self.subscription = self.create_subscription(String,'/relative_cone', self.relative_cone_callback, queue_size = 10)
-        self.drive_pub = self.create_publisher(Twist, '/cmd_vel', queue_size=10)
-        self.error_pub = self.create_publisher(String, 'parking_error', queue_size=10)
-        self.data_logger = self.create_publisher(String, 'data', queue_size = 10)
+        self.subscription = self.create_subscription(String,'/relative_cone', self.relative_cone_callback, 10)
+        self.drive_pub = self.create_publisher(Twist, '/cmd_vel', 10)
+        self.error_pub = self.create_publisher(String, 'parking_error',10)
+        self.data_logger = self.create_publisher(String, 'data',10)
         self.subscription  # prevent unused variable warning
 
 
         # May not exist on
         self.declare_parameter('parking_distance', 0.15)
         self.declare_parameter('VELOCITY', 0.75)
-        self.declare_parameter('my_double_array', [1.1, 2.2])
 
 
         # self.parking_distance = 0.15 if self.LineFollower else 0.5 # meters; try playing with this number!
