@@ -23,6 +23,7 @@ setup(
 		'drive = sandbox.move_robot:main',
         'pixel = sandbox.publish_point:main',
         'homography = sandbox.homography_transformer:main',
+	'controller = sandbox.parking_controller:main',
         ],
     },
 )
