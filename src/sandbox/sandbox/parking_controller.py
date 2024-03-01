@@ -12,8 +12,10 @@ class ParkingController(Node):
     Can be used in the simulator and on the real robot.
     """
     def __init__(self):
+        super().__init__("parking_controller")
+        
         ## will receive an x,y coord
-        self.create_subscription(Point,'/trash_pixel_loc', self.trashPos_callback, 10)
+        self.create_subscription(Point,'/trash_pixel_loc', self.trash_pixel_loc_callback, 10)
         self.drive_pub = self.create_publisher(Twist, '/cmd_vel', 10)
         self.error_pub = self.create_publisher(String, 'parking_error',10)
         self.data_logger = self.create_publisher(String, 'data',10)
@@ -31,13 +33,12 @@ class ParkingController(Node):
         self.orientation = False
 
     
-    def trashPos_callback(self, msg):
+    def trash_pixel_loc_callback(self, msg):
         """
         Park car facing object given x_pos and y_pos
         """
-        self.get_logger().info('I heard')
-        #self.get_logger().info('I heard: "%s"' % msg.data)
-        """ 
+        self.get_logger().info('I heard: "%s"' % msg.data)
+      
         self.relative_x = msg.x
         self.relative_y = msg.y
         L = 0.325 # Wheel base TODO Need to Change
@@ -96,11 +97,11 @@ class ParkingController(Node):
                 self.drive_pub.publish(drive_msg)
 
         self.error_publisher()
-        """
 
 
-def main(args=None):
-    rclpy.init(args=args)
+
+def main():
+    rclpy.init()
 
     parking_controller = ParkingController()
 
