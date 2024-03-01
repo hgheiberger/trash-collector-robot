@@ -98,7 +98,7 @@ class ParkingController(Node):
                 drive_msg.angular.z = -steer_angle
                 self.drive_pub.publish(drive_msg)
 
-        self.error_publisher()
+        #self.error_publisher()
 
 
 
