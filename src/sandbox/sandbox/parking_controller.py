@@ -37,7 +37,7 @@ class ParkingController(Node):
         """
         Park car facing object given x_pos and y_pos
         """
-        self.get_logger().info('I heard: "%s"' % msg.data)
+        self.get_logger().info(f"Heard point: ({msg.x}, {msg.y})")
       
         self.relative_x = msg.x
         self.relative_y = msg.y
