@@ -23,7 +23,7 @@ class ParkingController(Node):
 
         # May not exist on
         self.declare_parameter('parking_distance', 0.15)
-        self.declare_parameter('VELOCITY', 0.75)
+        self.declare_parameter('velocity', 0.75)
 
         self.parking_distanace = self.get_parameter('parking_distance').get_parameter_value().double_value
         self.VELOCITY = self.get_parameter('velocity').get_parameter_value().double_value
