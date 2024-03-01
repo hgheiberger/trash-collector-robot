@@ -25,7 +25,7 @@ class ParkingController(Node):
         self.declare_parameter('parking_distance', 0.15)
         self.declare_parameter('velocity', 0.75)
 
-        self.parking_distanace = self.get_parameter('parking_distance').get_parameter_value().double_value
+        self.parking_distance = self.get_parameter('parking_distance').get_parameter_value().double_value
         self.VELOCITY = self.get_parameter('velocity').get_parameter_value().double_value
 
         # self.parking_distance = 0.15 if self.LineFollower else 0.5 # meters; try playing with this number!
