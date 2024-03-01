@@ -13,11 +13,10 @@ class ParkingController(Node):
     """
     def __init__(self):
         ## will receive an x,y coord
-        self.subscription = self.create_subscription(Point,'/trash_pixel_loc', self.relative_cone_callback, 10)
+        self.create_subscription(Point,'/trash_pixel_loc', self.trashPos_callback, 10)
         self.drive_pub = self.create_publisher(Twist, '/cmd_vel', 10)
         self.error_pub = self.create_publisher(String, 'parking_error',10)
         self.data_logger = self.create_publisher(String, 'data',10)
-        self.subscription  # prevent unused variable warning
 
 
         # May not exist on
@@ -32,12 +31,13 @@ class ParkingController(Node):
         self.orientation = False
 
     
-    def relative_cone_callback(self, msg):
+    def trashPos_callback(self, msg):
         """
         Park car facing object given x_pos and y_pos
         """
-        self.get_logger().info('I heard: "%s"' % msg.data)
-
+        self.get_logger().info('I heard')
+        #self.get_logger().info('I heard: "%s"' % msg.data)
+        """ 
         self.relative_x = msg.x
         self.relative_y = msg.y
         L = 0.325 # Wheel base TODO Need to Change
@@ -96,6 +96,7 @@ class ParkingController(Node):
                 self.drive_pub.publish(drive_msg)
 
         self.error_publisher()
+        """
 
 
 def main(args=None):
