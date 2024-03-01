@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 import math
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Point
 from std_msgs.msg import String
 
 
@@ -13,7 +13,7 @@ class ParkingController(Node):
     """
     def __init__(self):
         ## will receive an x,y coord
-        self.subscription = self.create_subscription(String,'/relative_cone', self.relative_cone_callback, 10)
+        self.subscription = self.create_subscription(Point,'/trash_pixel_loc', self.relative_cone_callback, 10)
         self.drive_pub = self.create_publisher(Twist, '/cmd_vel', 10)
         self.error_pub = self.create_publisher(String, 'parking_error',10)
         self.data_logger = self.create_publisher(String, 'data',10)
@@ -38,8 +38,8 @@ class ParkingController(Node):
         """
         self.get_logger().info('I heard: "%s"' % msg.data)
 
-        self.relative_x = msg.x_pos
-        self.relative_y = msg.y_pos
+        self.relative_x = msg.x
+        self.relative_y = msg.y
         L = 0.325 # Wheel base TODO Need to Change
         eta = math.atan2(self.relative_y, self.relative_x)
         cone_dist = math.sqrt(self.relative_x**2 + self.relative_y**2)
