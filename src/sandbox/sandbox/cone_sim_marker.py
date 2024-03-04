@@ -9,8 +9,7 @@ from tf_transformations import euler_from_quaternion
 import tf2_ros
 
 from visualization_msgs.msg import Marker
-from geometry_msgs.msg import PointStamped
-from servoing_msgs.msg import ConeLocation
+from geometry_msgs.msg import PointStamped, Point
 
 class SimMarker(Node):
     """
@@ -35,7 +34,7 @@ class SimMarker(Node):
         self.message_y = None
         self.message_frame = "map"
 
-        self.cone_pub = self.create_publisher(ConeLocation, '/trash_pixel_loc', 1)
+        self.cone_pub = self.create_publisher(Point, '/trash_pixel_loc', 1)
         self.marker_pub = self.create_publisher(Marker, '/cone_marker', 1)
 
 
@@ -81,9 +80,9 @@ class SimMarker(Node):
         #self.get_logger().info("Checkpoint 4")
 
         # Publish relative cone location
-        relative_cone = ConeLocation()
-        relative_cone.x_pos = cone_relative_baselink_x
-        relative_cone.y_pos = cone_relative_baselink_y
+        relative_cone = Point()
+        relative_cone.x = cone_relative_baselink_x
+        relative_cone.y = cone_relative_baselink_y
         self.get_logger().info("%f" % relative_cone.x_pos)
         self.get_logger().info("%f" % relative_cone.y_pos)
 
