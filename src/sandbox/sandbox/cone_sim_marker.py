@@ -111,6 +111,7 @@ class SimMarker(Node):
 
         
     def clicked_callback(self, msg):
+        print("callback called")
         # Store clicked point in the map frame
         transform = self.tf_buffer.lookup_transform(
                 self.message_frame, msg.header.frame_id, rclpy.time.Time())
@@ -135,6 +136,7 @@ class SimMarker(Node):
         
         # Draw a marker for visualization
         self.draw_marker()
+        print("callback ended")
 
     def timer_callback(self):
         self.publish_cone()
@@ -142,15 +144,12 @@ class SimMarker(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    try:
-        sim_marker = SimMarker()
-        rclpy.spin(sim_marker)
-    except:
-        pass
 
-    finally:
-        sim_marker.destroy_node()
-        rclpy.shutdown()
+    sim_marker = SimMarker()
+    rclpy.spin(sim_marker)
     
+    sim_marker.destroy_node()
+    rclpy.shutdown()
+
 if __name__ == '__main__':
     main()
