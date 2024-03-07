@@ -9,7 +9,7 @@ from tf_transformations import euler_from_quaternion
 import tf2_ros
 
 from visualization_msgs.msg import Marker
-from geometry_msgs.msg import PointStamped, Point
+from geometry_msgs.msg import PoseStamped , Point
 
 class SimMarker(Node):
     """
@@ -23,8 +23,8 @@ class SimMarker(Node):
 
         # Subscribe to clicked point messages from rviz    
         self.subscription = self.create_subscription(
-            PointStamped,
-            '/clicked_point',
+            PoseStamped ,
+            '/goal_pose',
             self.clicked_callback,
             10
         )
@@ -126,12 +126,12 @@ class SimMarker(Node):
         msg_frame_pos = transform.transform.translation
         
         self.message_x = \
-            msg_frame_pos.x+np.cos(yaw)*msg.point.x\
-            -np.sin(yaw)*msg.point.y
+            msg_frame_pos.x+np.cos(yaw)*msg.pose.position.point.x\
+            -np.sin(yaw)*msg.pose.position.y
         
         self.message_y = \
-            msg_frame_pos.y+np.cos(yaw)*msg.point.y\
-            +np.sin(yaw)*msg.point.x
+            msg_frame_pos.y+np.cos(yaw)*msg.pose.position.point.y\
+            +np.sin(yaw)*msg.pose.position.x
         
         # Draw a marker for visualization
         self.draw_marker()
