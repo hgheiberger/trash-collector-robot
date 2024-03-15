@@ -17,20 +17,20 @@ from geometry_msgs.msg import Point
 # see README.md for coordinate frame description
 
 ######################################################
-PTS_IMAGE_PLANE = [[235, 272],
-                   [185, 314],
-                   [458, 270],
-                   [511, 312]] # Last year points
+PTS_IMAGE_PLANE = [[440, 440],
+                   [281, 338],
+                   [253, 315],
+                   [575, 357]] # 03/15/2024 Measurements
 ######################################################
 
 # PTS_GROUND_PLANE units are in inches
 # car looks along positive x axis with positive y axis to left
 
 ######################################################
-PTS_GROUND_PLANE = [[30, 10],
-                    [20, 10],
-                    [30, -10],
-                    [20, -10]] # Last year points
+PTS_GROUND_PLANE = [[32, -5],
+                    [68, 7],
+                    [91, 13],
+                    [56, -22]] # 03/15/2024 Measurements
 ######################################################
 
 METERS_PER_INCH = 0.0254
