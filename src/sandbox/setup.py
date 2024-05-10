@@ -23,6 +23,7 @@ setup(
 		'drive = sandbox.move_robot:main',
         'pixel = sandbox.publish_point:main',
         'homography = sandbox.homography_transformer:main',
+        'can_detector = sandbox.can_detector_ros:main',
 	'controller = sandbox.parking_controller:main',
 	'sim_marker = sandbox.cone_sim_marker:main',
         ],
